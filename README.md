@@ -8,6 +8,7 @@
   <img src="https://img.shields.io/badge/Tailwind-00b7d6" />
   <img src="https://img.shields.io/badge/Typescript-3178C6" />
   <img src="https://img.shields.io/badge/React-61DAFB" />
+  <img src="https://img.shields.io/badge/Redux-764ABC" />
   <img src="https://img.shields.io/badge/Npm-CB3837" />
   <img src="https://img.shields.io/badge/Yarn-2C8EBB" />
   <img src="https://img.shields.io/badge/Netlify-00C7B7" />
@@ -43,3 +44,4 @@
 - Current Weather
 - Daily Weather for 7 days
 - Global Map
+- DarkMode
