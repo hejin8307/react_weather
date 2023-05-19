@@ -7,6 +7,19 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Weather from './pages/Weather';
 import WeatherDetail from './pages/WeatherDetail';
+import {configureStore} from '@reduxjs/toolkit';
+import {getDefaultMiddleware} from '@reduxjs/toolkit';
+import {persistStore} from 'redux-persist';
+import {Provider} from 'react-redux';
+import rootReducer from './redux/index';
+
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware({
+    serializableCheck: false,
+  }),
+});
+const persistor = persistStore(store);
 
 const router = createBrowserRouter([
   {
@@ -26,7 +39,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 
