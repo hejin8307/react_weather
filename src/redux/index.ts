@@ -2,7 +2,7 @@ import {combineReducers} from '@reduxjs/toolkit';
 import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import DarkModeReducer from './DarkModeSlice';
-import CurrentWeatherReducer from './CurrentWeatherSlice';
+import CurrentWeatherReducer from './currentWeather/CurrentWeatherSlice';
 
 const persistConfig = {
   key: 'weather',

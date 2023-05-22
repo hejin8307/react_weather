@@ -3,7 +3,7 @@ import {getDefaultMiddleware} from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import {all, call} from 'redux-saga/effects';
 import rootReducer from './index';
-import CurrentWeahterSaga from '../service/CurrentWeahterSaga';
+import CurrentWeahterSaga from './currentWeather/CurrentWeahterSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 

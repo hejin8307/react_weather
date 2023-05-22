@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import getCurrentLocation from '../service/CurrentLocation';
 import WeatherAPI from '../service/WeatherAPI';
-import {currentWeatherActions} from '../redux/CurrentWeatherSlice';
 import {RootState} from '../redux/store';
-import {CurrentWeatherType} from '../redux/CurrentWeatherSlice';
+import {CurrentWeatherType} from '../redux/currentWeather/CurrentWeatherSlice';
+import {currentWeatherActions} from '../redux/currentWeather/CurrentWeatherSlice';
 
 function Weather() {
   const currentWeather = useSelector<RootState, CurrentWeatherType>(
@@ -12,9 +12,9 @@ function Weather() {
   );
   const dispatch = useDispatch();
 
-  //   useEffect(() => {
-  //     console.log(currentWeather);
-  //   }, [currentWeather]);
+  useEffect(() => {
+    console.log(currentWeather);
+  }, [currentWeather]);
 
   useEffect(() => {
     dispatch(currentWeatherActions.loading());

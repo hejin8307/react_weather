@@ -1,9 +1,9 @@
 import React from 'react';
 import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
 import {AxiosResponse} from 'axios';
-import getCurrentLocation from '../service/CurrentLocation';
-import WeatherAPI from './WeatherAPI';
-import {currentWeatherActions} from '../redux/CurrentWeatherSlice';
+import getCurrentLocation from '../../service/CurrentLocation';
+import WeatherAPI from '../../service/WeatherAPI';
+import {currentWeatherActions} from './CurrentWeatherSlice';
 
 const weatherAPI = new WeatherAPI();
 
