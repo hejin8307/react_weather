@@ -12,14 +12,22 @@ import {getDefaultMiddleware} from '@reduxjs/toolkit';
 import {persistStore} from 'redux-persist';
 import {Provider} from 'react-redux';
 import rootReducer from './redux/index';
+import createSagaMiddleware from 'redux-saga';
+import {default as store} from './redux/store';
 
-const store = configureStore({
-  reducer: rootReducer,
-  middleware: getDefaultMiddleware({
-    serializableCheck: false,
-  }),
-});
+// const sagaMiddleware = createSagaMiddleware();
+
+// const store = configureStore({
+//   reducer: rootReducer,
+//   middleware: [
+//     sagaMiddleware,
+//     ...getDefaultMiddleware({serializableCheck: false}),
+//   ],
+// });
+
 const persistor = persistStore(store);
+
+// sagaMiddleware.run(rootSaga);
 
 const router = createBrowserRouter([
   {

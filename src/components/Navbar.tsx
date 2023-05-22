@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import {toggleDarkMode} from '../redux/DarkMode';
+import {toggleDarkMode} from '../redux/DarkModeSlice';
 import {IoGrid, IoLocationSharp} from 'react-icons/io5';
 import {HiBell} from 'react-icons/hi';
 import {CiSearch} from 'react-icons/ci';
