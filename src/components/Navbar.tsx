@@ -1,13 +1,29 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {toggleDarkMode} from '../redux/DarkModeSlice';
+import {currentWeatherActions} from '../redux/currentWeather/CurrentWeatherSlice';
 import {IoGrid, IoLocationSharp} from 'react-icons/io5';
 import {HiBell} from 'react-icons/hi';
 import {CiSearch} from 'react-icons/ci';
 import {BiSun, BiMoon} from 'react-icons/bi';
+import {useNavigate} from 'react-router-dom';
 
 function Navbar() {
+  const [text, setText] = useState('');
+
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // dispatch(currentWeatherActions.loading());
+    // dispatch(currentWeatherActions.success(text));
+    navigate(`/weather/${text}`);
+  };
+
+  // 뒤로가기 했을 때 이전 페이지와 동기화
+  // useEffect(() => setText(address || ''), [address]);
 
   return (
     <header className="flex items-center justify-between w-full">
@@ -24,7 +40,7 @@ function Navbar() {
         </div>
       </div>
       {/* 검색 */}
-      <form className="flex w-4/12">
+      <form className="flex w-4/12" onSubmit={handleSubmit}>
         <button className="bg-lightgrey rounded-tl-3xl rounded-bl-3xl pl-4">
           <CiSearch size="24" />
         </button>
@@ -33,6 +49,7 @@ function Navbar() {
           className="w-full bg-lightgrey rounded-tr-3xl rounded-br-3xl outline-none py-2 placeholder:text-black indent-2"
           placeholder="Search city..."
           spellCheck="false"
+          onChange={(e) => setText(e.target.value)}
         />
       </form>
       <label className="relative inline-flex items-center cursor-pointer">

@@ -4,16 +4,22 @@ import {AxiosResponse} from 'axios';
 import getCurrentLocation from '../../service/CurrentLocation';
 import WeatherAPI from '../../service/WeatherAPI';
 import {currentWeatherActions} from './CurrentWeatherSlice';
+import Location from '../../service/Location';
 
-const weatherAPI = new WeatherAPI();
-
-function* CurrentWeahter(): Generator<any, void, any> {
+function* CurrentWeahter(action: any): Generator<any, void, any> {
   try {
-    const currentLocation = yield call(getCurrentLocation);
+    const location = new Location();
+    const weatherAPI = new WeatherAPI();
+
+    // const {address} = action.payload;
+    // console.log(address);
+
+    const currentLocation = yield call(location.getCurrentLocation);
+    // const currentLocation = yield call(location.search, address);
     const {latitude, longitude} = currentLocation;
     console.log(`lat: ${latitude}, lon: ${longitude}`);
     const response: AxiosResponse = yield call(
-      WeatherAPI.weather,
+      weatherAPI.weather,
       latitude,
       longitude
     );

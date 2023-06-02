@@ -9,6 +9,7 @@ const persistConfig = {
   storage,
   whitelist: ['DarkModeReducer'],
 };
+
 const rootReducer = combineReducers({
   DarkModeReducer,
   CurrentWeatherReducer,

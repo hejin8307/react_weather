@@ -3,11 +3,12 @@ export interface LocationType {
   longitude: number;
 }
 
-const getCurrentLocation = (): Promise<LocationType> => {
+function getCurrentLocation(): Promise<LocationType> {
   return new Promise<LocationType>((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const {latitude, longitude} = position.coords;
+        console.log(position);
         resolve({latitude, longitude});
       },
       (error) => {
@@ -15,6 +16,6 @@ const getCurrentLocation = (): Promise<LocationType> => {
       }
     );
   });
-};
+}
 
 export default getCurrentLocation;

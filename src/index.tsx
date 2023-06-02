@@ -7,27 +7,12 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Weather from './pages/Weather';
 import WeatherDetail from './pages/WeatherDetail';
-import {configureStore} from '@reduxjs/toolkit';
-import {getDefaultMiddleware} from '@reduxjs/toolkit';
 import {persistStore} from 'redux-persist';
+import {PersistGate} from 'redux-persist/integration/react';
 import {Provider} from 'react-redux';
-import rootReducer from './redux/index';
-import createSagaMiddleware from 'redux-saga';
 import {default as store} from './redux/store';
 
-// const sagaMiddleware = createSagaMiddleware();
-
-// const store = configureStore({
-//   reducer: rootReducer,
-//   middleware: [
-//     sagaMiddleware,
-//     ...getDefaultMiddleware({serializableCheck: false}),
-//   ],
-// });
-
 const persistor = persistStore(store);
-
-// sagaMiddleware.run(rootSaga);
 
 const router = createBrowserRouter([
   {
@@ -48,7 +33,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
